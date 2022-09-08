@@ -1,0 +1,15 @@
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\bin\Release\net5.0\DataTransfertObject.exe
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\bin\Release\net5.0\DataTransfertObject.deps.json
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\bin\Release\net5.0\DataTransfertObject.runtimeconfig.json
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\bin\Release\net5.0\DataTransfertObject.runtimeconfig.dev.json
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\bin\Release\net5.0\DataTransfertObject.dll
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\bin\Release\net5.0\ref\DataTransfertObject.dll
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\bin\Release\net5.0\DataTransfertObject.pdb
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\obj\Release\net5.0\DataTransfertObject.GeneratedMSBuildEditorConfig.editorconfig
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\obj\Release\net5.0\DataTransfertObject.AssemblyInfoInputs.cache
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\obj\Release\net5.0\DataTransfertObject.AssemblyInfo.cs
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\obj\Release\net5.0\DataTransfertObject.csproj.CoreCompileInputs.cache
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\obj\Release\net5.0\DataTransfertObject.dll
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\obj\Release\net5.0\ref\DataTransfertObject.dll
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\obj\Release\net5.0\DataTransfertObject.pdb
+O:\Github\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\Main\DataTransfertObject\obj\Release\net5.0\DataTransfertObject.genruntimeconfig.cache

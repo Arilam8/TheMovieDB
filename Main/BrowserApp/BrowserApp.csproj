@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>BrowserApp.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\img\ImageActorNotFound.png" />
+    <Content Remove="wwwroot\img\PosterNotFound.png" />
+    <Content Remove="wwwroot\lib\PosterNotFound.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataTransferObject\DataTransferObject.csproj" />
+    <ProjectReference Include="..\Utils\Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\img\ImageActorNotFound.png" />
+    <Resource Include="wwwroot\img\PosterNotFound.png" />
+    <Resource Include="wwwroot\lib\PosterNotFound.png" />
+  </ItemGroup>
+
+</Project>

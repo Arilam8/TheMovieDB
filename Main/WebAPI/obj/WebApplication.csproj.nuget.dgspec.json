@@ -1,0 +1,290 @@
+{
+  "format": 1,
+  "restore": {
+    "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\WebApplication1\\WebApplication.csproj": {}
+  },
+  "projects": {
+    "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "projectName": "BusinessLogicLayer",
+        "projectPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "packagesPath": "C:\\Users\\ezzas\\.nuget\\packages\\",
+        "outputPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\BusinessLogicLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "A:\\IDE\\VisualStudio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ezzas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataTransfertObject\\DataTransfertObject.csproj": {
+                "projectPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataTransfertObject\\DataTransfertObject.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataAccessLayer\\DataAccessLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectName": "DataAccessLayer",
+        "projectPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\ezzas\\.nuget\\packages\\",
+        "outputPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataAccessLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "A:\\IDE\\VisualStudio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ezzas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "SQLiteNetExtensions": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataTransfertObject\\DataTransfertObject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataTransfertObject\\DataTransfertObject.csproj",
+        "projectName": "DataTransfertObject",
+        "projectPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataTransfertObject\\DataTransfertObject.csproj",
+        "packagesPath": "C:\\Users\\ezzas\\.nuget\\packages\\",
+        "outputPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\DataTransfertObject\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "A:\\IDE\\VisualStudio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ezzas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\WebApplication1\\WebApplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\WebApplication1\\WebApplication.csproj",
+        "projectName": "WebApplication",
+        "projectPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\WebApplication1\\WebApplication.csproj",
+        "packagesPath": "C:\\Users\\ezzas\\.nuget\\packages\\",
+        "outputPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\WebApplication1\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "A:\\IDE\\VisualStudio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ezzas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+                "projectPath": "O:\\Github\\programmation-net-csharp-avance-2021-2022-2325-ezzayri-sami-lambert-aristide\\Main\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

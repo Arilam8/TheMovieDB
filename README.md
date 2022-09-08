@@ -8,6 +8,9 @@ de gestion, 3e Bachelier en informatique systémes orientation informatique indu
 informatique systémes orientation réseaux télécommunications.
 
 
+![alt text](https://github.com/RFC6592/TheMovieDb/blob/main/Layers.PNG)
+
+
 ## Auteurs : 
 + EZZAYRI Sami 
 + LAMBERT Aristide 

@@ -1,0 +1,83 @@
+﻿@using Utils.TextUtils
+@using Utils.TimeSpanUtils
+@model BrowserApp.Models.PaginationModel<MovieModel>
+@{
+    ViewData["Title"] = "Catalog";
+}
+<link rel = "stylesheet" href = "~/css/site.css" type = "text/css" asp-append-version="true" >
+
+<div class="text-center">
+    <table class="table-bordered" style="margin-left: auto; margin-right: auto;margin-top:10px;">
+        <thead>
+            <tr>
+                <th class="Text" width="50">Id</th>
+                <th class="Text" width="150">Poster</th>
+                <th class="Text" width="175">Title</th>
+                <th class="Text" width="100">Release date</th>
+                <th class="Text" width="100">Runtime</th>
+                <th class="Text" width="100">Rating</th>
+                <th class="Text" width="125">Rating( <img style="vertical-align:middle;" src="https://raw.githubusercontent.com/Arilam8/Images/main/Images/TheMovieDBLogo.png" height="15" alt="TheMovieDB" /> )</th>
+                <th class="Text" width="200">Overview</th>
+                <th class="Text" width="100">More information</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MovieModel movieUiModel in Model.Datas)
+            {
+                <tr height="250">
+                    <th class="Text" scope="row">@movieUiModel.Id</th>
+                    <td>
+ 
+                        <img class="Text" src="@movieUiModel.Poster" width="150" alt="No poster found!" onerror="this.src='https://raw.githubusercontent.com/Arilam8/Images/main/Images/PosterNotFound.png'"/>
+
+                    </td>
+                    <td class="Text" style="text-align:center;">@movieUiModel.Title</td>
+                    <td class="Text" style="text-align:center;">@((movieUiModel.ReleaseDate == (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue) ? "N/A" : movieUiModel.ReleaseDate.Year)</td>
+                    <td class="Text" style="text-align:center;">@TimeSpanUtils.GetRuntime(movieUiModel.Runtime)</td>
+                    <td class="Text" style="text-align:center;font-size:20px;color: orange;">@movieUiModel.RatingStar</td>
+                    <td class="Text" style="text-align:center;font-size:20px;color: orange;">@movieUiModel.RatingTheMovieDBStar</td>
+                    <td class="Text">@(string.IsNullOrWhiteSpace(movieUiModel.Overview) == false ? TextUtils.GetTextMaxLength(movieUiModel.Overview, 315) : "N/A")</td>
+                    <td style="text-align:center;"><input type="button" class="Text" value="More" id="@movieUiModel.Id" name="SelectedMovie" onclick="location.href='@Url.Action("", "FullMovie", new { idmovie = movieUiModel.Id })'" /></td>
+                </tr>
+            }
+            <tr><td class="Text" colspan="9">@Model.TotalRecords movies</td></tr>
+        </tbody>
+    </table>
+    <div style="margin-left: auto; margin-right: auto; margin-top:40px;margin-bottom:100px;width:fit-content;">
+        <div style="position:relative;">
+            @if (Model.IsFirstPage)
+            {
+                <input id="PreviousButtonStatus" type="button" value="<<" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{page = 1})'" />
+            }
+            else
+            {
+                <input disabled type="button" value="<<" class="ButtonNavigation" style="cursor:none;" />
+            }
+            @if (Model.IsPreviousPage)
+            {
+                <input id="PreviousButtonStatus" type="button" value="<" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{page = Model.PageNumber - 1})'" />
+            }
+            else
+            {
+                <input disabled type="button" value="<" class="ButtonNavigation" style="cursor:none;" />
+            }
+            <h3 class="NumberPage">@Model.PageNumber</h3>
+            @if (Model.IsNextPage)
+            {
+                <input id="NextButtonStatus" type="button" value=">" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{page = Model.PageNumber + 1})'" />
+            }
+            else
+            {
+                <input disabled type="button" value=">" class="ButtonNavigation" style="cursor:none;" />
+            }
+            @if (Model.IsLastPage)
+            {
+                <input id="NextButtonStatus" type="button" value=">>" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{page = Model.TotalPages})'" />
+            }
+            else
+            {
+                <input disabled type="button" value=">>" class="ButtonNavigation" style="cursor:none;" />
+            }
+        </div>
+    </div>
+</div>

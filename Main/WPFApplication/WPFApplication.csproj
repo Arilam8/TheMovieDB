@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\BackdropNotFound.png" />
+    <None Remove="Images\ImageActorNotFound.png" />
+    <None Remove="Images\MovieTypes\Action.png" />
+    <None Remove="Images\MovieTypes\Adventure.png" />
+    <None Remove="Images\MovieTypes\Animation.png" />
+    <None Remove="Images\MovieTypes\Comedy.png" />
+    <None Remove="Images\MovieTypes\Crime.png" />
+    <None Remove="Images\MovieTypes\Documentary.png" />
+    <None Remove="Images\MovieTypes\Drama.png" />
+    <None Remove="Images\MovieTypes\Family.png" />
+    <None Remove="Images\MovieTypes\Fantasy.png" />
+    <None Remove="Images\MovieTypes\Fiction.png" />
+    <None Remove="Images\MovieTypes\History.png" />
+    <None Remove="Images\MovieTypes\Horror.png" />
+    <None Remove="Images\MovieTypes\Music.png" />
+    <None Remove="Images\MovieTypes\Mystery.png" />
+    <None Remove="Images\MovieTypes\Romance.png" />
+    <None Remove="Images\MovieTypes\Science-Fiction.png" />
+    <None Remove="Images\MovieTypes\Thriller.png" />
+    <None Remove="Images\MovieTypes\Tv-Movie.png" />
+    <None Remove="Images\MovieTypes\War.png" />
+    <None Remove="Images\MovieTypes\Western.png" />
+    <None Remove="Images\PosterNotFound.png" />
+    <None Remove="TheMovieDBLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\BackdropNotFound.png" />
+    <Resource Include="Images\MovieTypes\Action.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentWPF" Version="0.10.2" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.6" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataTransferObject\DataTransferObject.csproj" />
+    <ProjectReference Include="..\Utils\Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\ImageActorNotFound.png" />
+    <Resource Include="Images\MovieTypes\Adventure.png" />
+    <Resource Include="Images\MovieTypes\Animation.png" />
+    <Resource Include="Images\MovieTypes\Comedy.png" />
+    <Resource Include="Images\MovieTypes\Crime.png" />
+    <Resource Include="Images\MovieTypes\Documentary.png" />
+    <Resource Include="Images\MovieTypes\Drama.png" />
+    <Resource Include="Images\MovieTypes\Family.png" />
+    <Resource Include="Images\MovieTypes\Fantasy.png" />
+    <Resource Include="Images\MovieTypes\Fiction.png" />
+    <Resource Include="Images\MovieTypes\History.png" />
+    <Resource Include="Images\MovieTypes\Horror.png" />
+    <Resource Include="Images\MovieTypes\Music.png" />
+    <Resource Include="Images\MovieTypes\Mystery.png" />
+    <Resource Include="Images\MovieTypes\Romance.png" />
+    <Resource Include="Images\MovieTypes\Science-Fiction.png" />
+    <Resource Include="Images\MovieTypes\Thriller.png" />
+    <Resource Include="Images\MovieTypes\Tv-Movie.png" />
+    <Resource Include="Images\MovieTypes\War.png" />
+    <Resource Include="Images\MovieTypes\Western.png" />
+    <Resource Include="Images\PosterNotFound.png" />
+    <Resource Include="Images\TheMovieDBLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

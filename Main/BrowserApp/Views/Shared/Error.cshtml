@@ -1,0 +1,16 @@
+﻿@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 style="font-family:Arial;" class="text-danger">Error</h1>
+<h2 style="font-family:Arial;" class="text-danger">An error occurred while processing your request.</h2>
+
+<p style="font-family:Arial;">
+    <strong>StatusCode:</strong> <code>@Model.StatusCode</code>
+</p>
+<p style ="font-family:Arial;">
+    <strong>Message:</strong> <code>@Model.Message</code>
+</p>
+<br/>
+<button style="font-family:Arial;" onClick="window.location.reload();">Refresh Page</button>

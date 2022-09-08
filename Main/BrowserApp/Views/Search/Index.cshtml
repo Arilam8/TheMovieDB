@@ -1,0 +1,258 @@
+﻿@using Utils.TextUtils
+@using Utils.TimeSpanUtils
+@using BrowserApp.Utils
+@using static BrowserApp.Utils.Constant
+@model BrowserApp.Models.SearchModel<MovieModel>
+@{
+    ViewData["Title"] = "Search";
+}
+
+<!-- -->
+<style>
+    .container {
+        background: #fff;
+        width: 100%;
+    }
+
+    .container .header {
+        width: 100%;
+        background: black;
+        height: 70px;
+    }
+
+    .header h1 {
+        color: #fff;
+        font-size: 20px;
+        line-height: 70px;
+        margin: 0 20px;
+    }
+
+    .container ul {
+        padding:0px;
+        list-style-type: none;
+        text-align: center;
+    }
+
+    .container ul li {
+        padding: 20px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    ul li img {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+
+    ul li h1 {
+        margin-left: 70px;
+        margin-top: -50px;
+        font-size: 17px;
+        font-weight: 550;
+    }
+
+    ul li p {
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    ul li:hover {
+        background: gray;
+    }
+
+    .Text {
+        font-family: Arial;
+    }
+
+    .Navigation {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+        margin-bottom: 100px;
+        width: fit-content;
+    }
+
+    .ButtonNavigation {
+        font-family: Arial;
+        font-size: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        background: none;
+        border: none;
+        vertical-align: middle;
+    }
+
+    .NumberPage {
+        font-family: Arial;
+        font-size: 25px;
+        font-weight: bold;
+        vertical-align: middle;
+        display: inline;
+        width: fit-content;
+    }
+
+
+</style>
+<div class="text-center" style="margin-top: 55px;">
+    <div class="container">
+        <div class="header">
+            <h1>Keywords</h1>
+        </div>
+        <ul style="text-align: center;">
+            <li>
+                <p>OR = <span style="color: brown;">Spiderman OR StarWars</span></p>
+            </li>
+            <li>
+                <p>AND = <span style="color: brown;">Harisson Ford AND Tom Holland</span></p>
+            </li>
+            <li>
+                <p>NOT = <span style="color: brown;">NOT Spiderman</span></p>
+            </li>
+            <li>
+                <p>| = <span style="color: brown;">Spiderman | NOT StarWars</span></p>
+            </li>
+        </ul>
+    </div>
+
+    <form action="/Search/Movies/" style="margin-bottom:15px; margin-top:15px;">
+        <input placeholder="Title" id="Title" type="text" name="title" value="@Utils.GetValue(Model.TypeSearch, Model.Search, "")" onkeyup="Disable('Title', 'TitleSearch')" /><br />
+        <input id="TitleSearch" type="submit" value="Search" disabled />
+    </form>
+    <br />
+    <form action="/Search/Actors/" style="margin-bottom:50px; margin-top:25px;">
+        <input placeholder="Name's actor" id="Name" type="text" name="name" value="@Utils.GetValue(Model.TypeSearch, "", Model.Search)" onkeyup="Disable('Name', 'NameSearch')" /><br />
+        <input id="NameSearch" type="submit" value="Search" disabled />
+    </form>
+    @if (!string.IsNullOrWhiteSpace(Model.Search))
+    {
+        <hr style="margin-bottom:25px;" />
+        @if (Model.TotalRecords > 0)
+        {
+            <table class="table-bordered" style="margin-left: auto; margin-right: auto;">
+                <thead>
+                    <tr>
+                        <th class="Text" width="50">Id</th>
+                        <th class="Text" width="150">Poster</th>
+                        <th class="Text" width="175">Title</th>
+                        <th class="Text" width="100">Release date</th>
+                        <th class="Text" width="100">Runtime</th>
+                        <th class="Text" width="100">Rating</th>
+                        <th class="Text" width="125">Rating( <img style="vertical-align:middle;" src="https://raw.githubusercontent.com/Arilam8/Images/main/Images/TheMovieDBLogo.png" height="15" alt="TheMovieDB" /> )</th>
+                        <th class="Text" width="200">Overview</th>
+                        <th class="Text" width="100">More information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (MovieModel movieUiModel in Model.Datas)
+                    {
+                        <tr height="250">
+                            <th class="Text" scope="row">@movieUiModel.Id</th>
+                            <td>
+
+                                <img class="Text" src="@movieUiModel.Poster" width="150" alt="No poster found!" onerror="this.src='https://raw.githubusercontent.com/Arilam8/Images/main/Images/PosterNotFound.png'" />
+
+                            </td>
+                            <td class="Text" style="text-align:center;">@movieUiModel.Title</td>
+                            <td class="Text" style="text-align:center;">@((movieUiModel.ReleaseDate == (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue) ? "N/A" : movieUiModel.ReleaseDate.Year)</td>
+                            <td class="Text" style="text-align:center;">@TimeSpanUtils.GetRuntime(movieUiModel.Runtime)</td>
+                            <td class="Text" style="text-align:center;font-size:20px;color: orange;">@movieUiModel.RatingStar</td>
+                            <td class="Text" style="text-align:center;font-size:20px;color: orange;">@movieUiModel.RatingTheMovieDBStar</td>
+                            <td class="Text">@(string.IsNullOrWhiteSpace(movieUiModel.Overview) == false ? TextUtils.GetTextMaxLength(movieUiModel.Overview, 315) : "N/A")</td>
+                            <td style="text-align:center;"><input type="button" class="Text" value="More" id="@movieUiModel.Id" name="SelectedMovie" onclick="location.href='@Url.Action("", "FullMovie", new { idmovie = movieUiModel.Id })'" /></td>
+                        </tr>
+                    }
+                    <tr><td class="Text" colspan="9">@Model.TotalRecords movies</td></tr>
+                </tbody>
+            </table>
+            @if (Model.TypeSearch == SEARCH_TYPE_MOVIE_TITLE)
+            {
+                <div class="Navigation">
+                    <div style="position:relative;">
+                        @if (Model.IsFirstPage)
+                        {
+                            <input type="button" value="<<" class="ButtonNavigation" onclick="location.href='@Url.Action("Movies", new{title = Model.Search, page = 1})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value="<<" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                        @if (Model.IsPreviousPage)
+                        {
+                            <input type="button" value="<" class="ButtonNavigation" onclick="location.href='@Url.Action("Movies", new{title = Model.Search, page = Model.PageNumber - 1})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value="<" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                        <h3 class="NumberPage">@Model.PageNumber</h3>
+                        @if (Model.IsNextPage)
+                        {
+                            <input type="button" value=">" class="ButtonNavigation" onclick="location.href='@Url.Action("Movies", new{title = Model.Search, name = Model.Search,page = Model.PageNumber + 1})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value=">" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                        @if (Model.IsLastPage)
+                        {
+                            <input type="button" value=">>" class="ButtonNavigation" onclick="location.href='@Url.Action("Movies", new{title = Model.Search, page = Model.TotalPages})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value=">>" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="Navigation">
+                    <div style="position:relative;">
+                        @if (Model.IsFirstPage)
+                        {
+                            <input type="button" value="<<" class="ButtonNavigation" onclick="location.href='@Url.Action("Actors", new{name = Model.Search, page = 1})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value="<<" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                        @if (Model.IsPreviousPage)
+                        {
+                            <input type="button" value="<" class="ButtonNavigation" onclick="location.href='@Url.Action("Actors", new{name = Model.Search, page = Model.PageNumber - 1})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value="<" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                        <h3 class="NumberPage">@Model.PageNumber</h3>
+                        @if (Model.IsNextPage)
+                        {
+                            <input type="button" value=">" class="ButtonNavigation" onclick="location.href='@Url.Action("Actors", new{name = Model.Search ,page = Model.PageNumber + 1})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value=">" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                        @if (Model.IsLastPage)
+                        {
+                            <input type="button" value=">>" class="ButtonNavigation" onclick="location.href='@Url.Action("Actors", new{name = Model.Search, page = Model.TotalPages})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value=">>" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div style="margin-left: auto; margin-right: auto; margin-top:auto;margin-bottom:auto;width:fit-content">
+                <div style="position:relative">
+                    <img style="margin-left: auto;margin-right: auto;display: block;" src="https://static.thenounproject.com/png/1152691-200.png" height="100" />
+                    <h1 class="Text" style="text-align:center;font-size:30px; font-weight:bold;width:fit-content;">No result !</h1>
+                </div>
+            </div>
+        }
+    }
+</div>

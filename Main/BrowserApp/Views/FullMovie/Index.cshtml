@@ -1,0 +1,229 @@
+﻿@using BrowserApp.Models.Actors
+@using BrowserApp.Models.Comments
+@using DataTransferObject;
+@using BrowserApp.Utils;
+@using System.Configuration
+@using System.Globalization
+@using Utils.TextUtils
+@using Utils.TimeSpanUtils 
+@model BrowserApp.Models.FullMovieModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/site.css" type="text/css" asp-append-version="true">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400" rel="stylesheet">
+<div class="wrapper">
+    <div class="main_card">
+        <div class="card_left">
+            <div class="card_details">
+                @if (@Model.Logo != null)
+                {
+                    <img style="max-height: 50px;max-width: 300px;" src="@Model.Logo" alt="@Model.Title" />
+                } else {
+                    <h1 style="color: coral; text-decoration: double; text-transform: capitalize;">
+                        @Model.Title
+                    </h1>
+                }
+                <div class="card_details">
+                    <div class="card_cat">
+                        <p class="year">@(Model.ReleaseDate == (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue ? "N/A" : Model.ReleaseDate.Year)</p>
+                        <p class="time">@TimeSpanUtils.GetRuntime(Model.Runtime)</p>
+                        <p class="rates" style="color: orange; font-weight: bold;">@Utils.RatingToStar(Model.Rating)</p>
+                    </div>
+                </div>
+                <p class="disc">@(string.IsNullOrWhiteSpace(Model.Overview) == false ? TextUtils.GetTextMaxLength(Model.Overview, 500) : "N/A")</p>
+                </div>
+        </div>
+        <div class="card_right">
+            <div class="img_container">
+                <img src="@Model.Backdrop" onerror="this.src='https://raw.githubusercontent.com/Arilam8/Images/main/Images/Backdrop.png'" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <h2 style="text-align:center; margin-right:auto; margin-left:auto">Genres</h2>
+    <div id="resp-table">
+        <div class="resp-table-row">
+            @if (Model.MovieTypes.Count > 0)
+            {
+                @foreach (string movieType in Model.MovieTypes)
+                {
+                    <div style="#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;" class="table-body-cell">
+                        @movieType
+                    </div>
+                }
+            }
+            else
+            {
+                <div style="#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;" class="table-body-cell">
+                    N/A
+                </div>
+            }
+        </div>
+    </div>
+    <p></p>
+    <!-- Section ACTEURS -->
+    @if(Model.PaginationModelLightActorModel.TotalRecords != 0)
+    {
+        <h2 style="text-align:center; margin-right:auto; margin-left:auto">Actors</h2>
+        <div id="resp-table">
+            <div id="resp-table-body">
+                <div class="resp-table-row">
+                    <div style="line-height:40px;background-color: gainsboro;" class="table-body-cell">Image</div>
+                    <div style="line-height:40px;background-color: gainsboro;" class="table-body-cell">Surname</div>
+                    <div style="line-height:40px;background-color: gainsboro;" class="table-body-cell">Name</div>
+                    <div style="line-height:40px;background-color: gainsboro;" class="table-body-cell">Character</div>
+                    <div style="line-height:40px;background-color: gainsboro;" class="table-body-cell">
+                        More information
+                    </div>
+                </div>
+                <div class="resp-table-row">
+                    @foreach (LightActorModel lightActorModel in Model.PaginationModelLightActorModel.Datas)
+                    {
+                        <div style="line-height:40px;" class="table-body-cell"><img src="@lightActorModel.Image" style="object-position: 50% 50%; object-fit: cover; margin: 0px auto; padding: 0; width: 40px; height: 40px; text-align: center; border-radius: 50%;" alt="No poster found!" onerror="this.src='https://raw.githubusercontent.com/Arilam8/Images/main/Images/ImageActorNotFound.png'" /></div>
+                        <div style="line-height:40px;" class="table-body-cell">@lightActorModel.Surname</div>
+                        <div style="line-height:40px;" class="table-body-cell">@lightActorModel.Name</div>
+                        <div style="line-height:40px;" class="table-body-cell">@(string.IsNullOrWhiteSpace(@lightActorModel.Role) ? "N/A" : @lightActorModel.Role)</div>
+                        <div class="table-body-cell">
+                            <input type="button" value="More" onclick="location.href='@Url.Action("", "Actor", new {idActor = lightActorModel.Id})'" />
+                        </div>
+
+                        <br />
+                    }
+                </div>
+            </div>
+        </div>
+        @if (Model.PaginationModelLightActorModel.TotalPages > 1)
+        {
+            <p></p>
+            <div style="margin-left: auto; margin-right: auto;width:fit-content;">
+                <div style="position:relative;">
+                    @if (Model.PaginationModelLightActorModel.IsFirstPage)
+                    {
+                        <input id="PreviousButtonStatusActor" type="button" value="<<" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{idMovie = Model.Id, pageActor = 1, pageComment = Model.PaginationModelCommentModel.PageNumber})'" />
+                    }
+                    else
+                    {
+                        <input disabled type="button" value="<<" class="ButtonNavigation" style="cursor:none;" />
+                    }
+                    @if (Model.PaginationModelLightActorModel.IsPreviousPage)
+                    {
+                        <input id="PreviousButtonStatusActor" type="button" value="<" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{idMovie = Model.Id, pageActor = Model.PaginationModelLightActorModel.PageNumber - 1, pageComment = Model.PaginationModelCommentModel.PageNumber})'" />
+                    }
+                    else
+                    {
+                        <input disabled type="button" value="<" class="ButtonNavigation" style="cursor:none;" />
+                    }
+                    <h3 class="NumberPage">@Model.PaginationModelLightActorModel.PageNumber</h3>
+                    @if (Model.PaginationModelLightActorModel.IsNextPage)
+                    {
+                        <input id="NextButtonStatusActor" type="button" value=">" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{idMovie = Model.Id, pageActor = Model.PaginationModelLightActorModel.PageNumber + 1, pageComment = Model.PaginationModelCommentModel.PageNumber})'" />
+                    }
+                    else
+                    {
+                        <input disabled type="button" value=">" class="ButtonNavigation" style="cursor:none;" />
+                    }
+                    @if (Model.PaginationModelLightActorModel.IsLastPage)
+                    {
+                        <input id="NextButtonStatusActor" type="button" value=">>" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{idMovie = Model.Id, pageActor = Model.PaginationModelLightActorModel.TotalPages, pageComment = Model.PaginationModelCommentModel.PageNumber})'" />
+                    }
+                    else
+                    {
+                        <input disabled type="button" value=">>" class="ButtonNavigation" style="cursor:none;" />
+                    }
+                </div>
+            </div>
+        }
+        <p></p>
+    }
+    <!-- Section COMMENTAIRES -->
+    <div>
+        <h2 style="text-align:center; margin-right:auto; margin-left:auto">Comments</h2>
+        @if(Model.PaginationModelCommentModel.TotalRecords != 0)
+        {
+            <div id="resp-table">
+                <div id="resp-table-body">
+                    <div class="resp-table-row">
+                        <div style="line-height:40px;background-color: gainsboro;" class="table-body-cell">Name</div>
+                        <div style="line-height:40px;background-color: gainsboro; max-width: 800px; min-width: 300px;" class="table-body-cell">Content</div>
+                        <div style="line-height:40px;background-color: gainsboro;" class="table-body-cell">Rating</div>
+                        <div style="line-height:40px;background-color: gainsboro;" class="table-body-cell">Post Date</div>
+                    </div>
+                    <div class="resp-table-row">
+                        @foreach (CommentModel commentModel in Model.PaginationModelCommentModel.Datas)
+                        {
+                            <div style="line-height:40px;" class="table-body-cell">@commentModel.Username</div>
+                            <div style="line-height:40px;max-width: 800px; min-width: 300px; overflow: scroll; text-overflow: ellipsis;" class="table-body-cell">@commentModel.Content</div>
+                            <div style="line-height:40px;" class="table-body-cell">@Utils.RatingToStar(commentModel.Rate)</div>
+                            <div style="line-height:40px;" class="table-body-cell">@(commentModel.Date.ToString("g", CultureInfo.CreateSpecificCulture("fr-BE")))</div>
+                            <br />
+                        }
+                    </div>
+                    <!--<input type="hidden" id="hfCurrentPageIndex" name="currentPageIndex" />-->
+                </div>
+            </div>
+            @if (Model.PaginationModelCommentModel.TotalPages > 1)
+            {
+                <p></p>
+                <div style="margin-left: auto; margin-right: auto;width:fit-content;">
+                    <div style="position:relative;">
+                        @if (Model.PaginationModelCommentModel.IsFirstPage)
+                        {
+                            <input id="PreviousButtonStatusComment" type="button" value="<<" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{idMovie = Model.Id, pageActor = Model.PaginationModelLightActorModel.PageNumber, pageComment = 1})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value="<<" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                        @if (Model.PaginationModelCommentModel.IsPreviousPage)
+                        {
+                            <input id="PreviousButtonStatusComment" type="button" value="<" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{idMovie = Model.Id, pageActor = Model.PaginationModelLightActorModel.PageNumber, pageComment = Model.PaginationModelCommentModel.PageNumber - 1})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value="<" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                        <h3 class="NumberPage">@Model.PaginationModelCommentModel.PageNumber</h3>
+                        @if (Model.PaginationModelCommentModel.IsNextPage)
+                        {
+                            <input id="NextButtonStatusComment" type="button" value=">" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{idMovie = Model.Id, pageActor = Model.PaginationModelLightActorModel.PageNumber, pageComment = Model.PaginationModelCommentModel.PageNumber + 1})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value=">" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                        @if (Model.PaginationModelCommentModel.IsLastPage)
+                        {
+                            <input id="NextButtonStatusComment" type="button" value=">>" class="ButtonNavigation" onclick="location.href='@Url.Action("Index", new{idMovie = Model.Id, pageActor = Model.PaginationModelLightActorModel.PageNumber, pageComment = Model.PaginationModelCommentModel.TotalPages})'" />
+                        }
+                        else
+                        {
+                            <input disabled type="button" value=">>" class="ButtonNavigation" style="cursor:none;" />
+                        }
+                    </div>
+                </div>
+            }
+            <p></p>
+        }
+        <!-- POSER UN COMMENTAIRE -->
+        <form action="/FullMovie/AddComment/" style="margin-bottom:15px; margin-top:15px;" onsubmit="return confirm('Are you sure you want to submit?');">
+            <input placeholder="Pseudo" type="text" name="username" id="username" required />
+            <input placeholder="Comment" type="text" name="content" id="content" required />
+            <label for="rate">Rating : </label>
+            <input placeholder="Rating" type="range" list="tickmarks" step="1" max="5" min="0" name="rate" id="rate" required />
+
+            <datalist id="tickmarks">
+                <option value="0" label="0" />
+                <option value="1" label="1" />
+                <option value="2" label="2" />
+                <option value="3" label="3" />
+                <option value="4" label="4" />
+                <option value="5" label="5" />
+            </datalist>
+            <input formmethod="post" style="background:#43a7d5;color:#fff;padding:12px;border:0" type="submit" value="Submit">
+        </form><br /><br />
+    </div>
+</div>

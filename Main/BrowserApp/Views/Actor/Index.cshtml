@@ -1,0 +1,32 @@
+﻿@model BrowserApp.Models.ActorModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center" style="text-align: center;">
+    <div>
+        <p>@Model.Surname</p>
+        <p>@Model.Name</p>
+        <p>
+            Born @(Model.Birthdate == ((DateTime)System.Data.SqlTypes.SqlDateTime.MinValue) ?
+            "Date of birth is unknown" : Model.Birthdate.ToShortDateString()
+            )
+        </p>
+        @if(Model.Deathdate != ((DateTime)System.Data.SqlTypes.SqlDateTime.MinValue))
+        {
+            <p>
+                Died @Model.Deathdate.ToShortDateString()
+            </p>
+        }
+        @if (Model.Age > 0)
+        {
+            <p>@string.Concat(Model.Age, " years old")</p>
+        }
+    </div><br />
+    <div>
+        <img onerror="this.src='https://raw.githubusercontent.com/Arilam8/Images/main/Images/ImageActorNotFound.png'" src="@Model.Image" width="150" style="border-radius: 50%;" alt="No poster found!" /><br />
+    </div><br />
+    <div>
+        <p>@(!String.IsNullOrEmpty(Model.Bio) ? Model.Bio : "We don't have a Bio for this person.")</p>
+    </div>
+</div>
