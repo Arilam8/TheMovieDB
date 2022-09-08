@@ -1,2 +1,13 @@
-# TheMovieDb
-UE Programmation r´eseaux, web et mobiles AA Programmation.Net
+# TheMovieDb - 2021 / 2022
+UE Programmation réseaux, web et mobiles AA Programmation.Net
+
+## Introduction
+Ce travail est demandé dans le cadre de l’activité d’apprentissage (AA) ”Programmation.Net” de l’unité
+d’enseignement (UE) ”Programmation réseaux, web et mobiles” de la section 3e Bachelier en informatique
+de gestion, 3e Bachelier en informatique systémes orientation informatique industrielle et 3e Bachelier en
+informatique systémes orientation réseaux télécommunications.
+
+
+## Auteurs : 
++ EZZAYRI Sami 
++ LAMBERT Aristide 
