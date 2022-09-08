@@ -11,6 +11,12 @@ informatique systémes orientation réseaux télécommunications.
 ![alt text](https://github.com/RFC6592/TheMovieDb/blob/main/Layers.PNG)
 
 
+![alt text](https://github.com/RFC6592/TheMovieDb/blob/main/WpfApplication.PNG)
+![alt text](https://github.com/RFC6592/TheMovieDb/blob/main/WpfApplicationNext.PNG)
+![alt text](https://github.com/RFC6592/TheMovieDb/blob/main/AspNet.PNG)
+![alt text](https://github.com/RFC6592/TheMovieDb/blob/main/AspNetNext.PNG)
+
+
 ## Auteurs : 
 + EZZAYRI Sami 
 + LAMBERT Aristide 
